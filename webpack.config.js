@@ -1,6 +1,7 @@
 // We are using node's native package 'path'
 // https://nodejs.org/api/path.html
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Constant with our paths
 const paths = {
@@ -16,7 +17,16 @@ module.exports = {
     path: paths.DIST,
     filename: 'app.bundle.js'
   },
-  devServer: {
-    contentBase: paths.SRC,
-  }
+  
+  // The whole devServer section is useless now
+//   devServer: {
+//     contentBase: paths.SRC, // This is not needed anymore since html-webpack-plugin will handle it
+//   }
+  // Tell webpack to use html plugin
+  // index.html is used as a template in which it'll inject bundled app.
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(paths.SRC, 'index.html'), // js file will be injected here
+    }),
+  ],
 };
