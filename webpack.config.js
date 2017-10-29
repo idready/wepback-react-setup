@@ -29,4 +29,27 @@ module.exports = {
       template: path.join(paths.SRC, 'index.html'), // js file will be injected here
     }),
   ],
+  // Loaders configuration
+  // We are telling webpack to use "babel-loader" for .js and .jsx files
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+        ],
+      },
+    ],
+  },
+  // Enable importing JS files without specifying their's extenstion
+  //
+  // So we can write:
+  // import MyComponent from './my-component';
+  //
+  // Instead of:
+  // import MyComponent from './my-component.jsx';
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };
