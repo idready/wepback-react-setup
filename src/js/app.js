@@ -1,8 +1,14 @@
-console.log(`Hola World`);
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 
-const obj = {
-    foo: "Bar",
-    bar: "Foo"
-};
+export default class Hello extends Component {
+  render() {
+    return (
+      <div>
+        Hello from react
+      </div>
+    );
+  }
+}
 
-console.log(`${obj}`);
+render(<Hello />, document.getElementById('app'));
